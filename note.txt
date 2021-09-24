@@ -4,9 +4,9 @@
 		* threads share the process memory.
 		* a child process has its own memory, which is a dup 
 			of the parent process.
-			==> The fact that all theads, which is being executed at the seame time,
+			==> The fact that all theads, which is being executed at the same time,
 			have access to the same memory, make it possible that multiple threads can
-			try to change the memory(a var) for the same time.
+			try to change the memory(a var) at the same time.
 			==> Race conditions: when threads 1 in its process (read X, icrement X "localy",
 			 write X to memory)to change a var X, and thread 2 do that as well, but stoped,
 			 for some reason, at reading for a while, let suppose the the read value is 5
@@ -19,3 +19,5 @@
 ##mutex : Try to use when it s necessary, it makes the prog slower.
 	* we initialize it before we create the thread.
 	* and sould be destroyed (the  memory whitch has been allocated).
+
+## How to create threads in loop:

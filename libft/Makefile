@@ -5,38 +5,42 @@
 #                                                     +:+ +:+         +:+      #
 #    By: akhalidy <akhalidy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/09/19 12:31:29 by akhalidy          #+#    #+#              #
-#    Updated: 2021/09/24 19:10:49 by akhalidy         ###   ########.fr        #
+#    Created: 2019/10/17 02:16:17 by akhalidy          #+#    #+#              #
+#    Updated: 2021/09/16 19:56:47 by akhalidy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY: all clean fclean re bonus
 
-NAME = philo
+NAME = libft.a
 
-NAME_BONUS = philo_bonus
+CC = gcc
 
-SRCS = 	main.c \
-		ft_strlen.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_atoi.c \
+SRC  =	ft_strlen.c ft_strncmp.c ft_calloc.c\
+		ft_atoi.c ft_itoa.c ft_isdigit.c ft_isinteger.c\
+		ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c\
+		get_next_line_outils.c get_next_line.c ft_bzero.c \
+		ft_strlcpy.c  ft_strdup.c\
+		circular_db_lst.c print_circular_db_lst.c\
 
-SRCS_BONUS =
+OBJ  = $(SRC:.c=.o)
 
-CFLAGS = -Wall -Wextra -Werror -pthread
+CFLAGS = -Wall -Werror -Wextra
 
-all		: $(NAME)
+all: $(NAME)
 
-$(NAME)	:	$(SRCS)
-			@gcc $(CFLAGS) $(SRCS) -o $(NAME)
-			@echo $(NAME) was created !
-clean	:
-			@rm -f $(NAME)
-		
-fclean	: clean
+$(NAME): $(OBJ)
+	@ar rc $(NAME) $(OBJ)
+	@ranlib $(NAME)
 
-re		: clean all
+$(OBJ):
+	@$(CC) $(CFLAGS) -c $(SRC)
+	@echo libft.a done
 
-bonus	: $(NAME_BONUS)
+clean:
+	@rm -f $(OBJ)
 
-$(NAME_BONUS) : $(SRCS_BONUS)
-			@gcc $(CFLAGS) $(SRCS_BONUS) -o $(NAME_BONUS)
-			@echo $(NAME_BONUS) was created !
+fclean: clean
+	@rm -f $(NAME)
+
+re: fclean all

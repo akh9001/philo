@@ -6,7 +6,7 @@
 /*   By: akhalidy <akhalidy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 12:20:22 by akhalidy          #+#    #+#             */
-/*   Updated: 2021/09/19 18:19:07 by akhalidy         ###   ########.fr       */
+/*   Updated: 2021/09/21 13:31:42 by akhalidy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,15 @@
 #include "pthread.h"
 
 pthread_mutex_t	mutex;
+
+void	ft_create_threads(int num_philo, pthread_t *philo)
+{
+	for (int i = 0; i < num_philo; i ++)
+	{
+		if (pthread_create(philo + i, NULL, &routine, (void *)&num))
+			return (-1);
+	}
+}
 
 void	*routine(void *num)
 {
@@ -30,7 +39,7 @@ void	*routine(void *num)
 	}
 	printf("Test from threads, var = %d\n", *var);
 	sleep(2);
-	printf("Ending thread %d, n = %d\n", getpid(), *var);
+	printf("Ending thread %d, n = %d\n", getpid(), *var); 
 	return (NULL);
 }
 
