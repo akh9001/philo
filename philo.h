@@ -6,7 +6,7 @@
 /*   By: akhalidy <akhalidy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 19:06:41 by akhalidy          #+#    #+#             */
-/*   Updated: 2021/09/24 19:10:18 by akhalidy         ###   ########.fr       */
+/*   Updated: 2021/09/25 18:48:45 by akhalidy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 # include "stdlib.h"
 # include "unistd.h"
 # include "pthread.h"
+# include "sys/time.h"
+
+typedef pthread_mutex_t p_mutex_t;
 
 typedef struct s_philo
 {
@@ -37,7 +40,9 @@ typedef struct s_global
 	int					num_philos;
 	int					time_sleep;
 	pthread_t			*philo_tab;
+	t_philo				philo;
 	pthread_mutex_t		*fork_tab;
+	pthread_mutex_t		print;
 }						t_global;
 
 /*
