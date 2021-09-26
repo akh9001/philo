@@ -6,7 +6,7 @@
 /*   By: akhalidy <akhalidy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 19:06:41 by akhalidy          #+#    #+#             */
-/*   Updated: 2021/09/25 18:48:45 by akhalidy         ###   ########.fr       */
+/*   Updated: 2021/09/26 11:50:18 by akhalidy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,25 +25,24 @@ typedef pthread_mutex_t p_mutex_t;
 
 typedef struct s_philo
 {
-	int			num;
+	int			id;
 	int			state;
-	pthread_t	*philo;
 	int			eat_num;
-	int			time_last_eat;
+	int			last_eat;
+	pthread_t	philo;
+	t_data		*data;
 }				t_philo;
 
-typedef struct s_global
+typedef struct s_data
 {
 	int					max_eat;
 	int					time_die;
 	int					time_eat;
 	int					num_philos;
 	int					time_sleep;
-	pthread_t			*philo_tab;
-	t_philo				philo;
-	pthread_mutex_t		*fork_tab;
+	pthread_mutex_t		*forks;
 	pthread_mutex_t		print;
-}						t_global;
+}						t_data;
 
 /*
 **	help functions

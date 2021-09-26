@@ -6,7 +6,7 @@
 /*   By: akhalidy <akhalidy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 19:06:11 by akhalidy          #+#    #+#             */
-/*   Updated: 2021/09/25 19:25:11 by akhalidy         ###   ########.fr       */
+/*   Updated: 2021/09/26 10:45:31 by akhalidy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	ft_fill_struct(char **argv, t_global *src)
 	if (*argv + 4)
 		src->max_eat = ft_atoi(*argv + 4);
 	src->fork_tab = (p_mutex_t *)malloc(num * sizeof(p_mutex_t));
-	src->fork_tab = (pthread_t *)malloc(num * sizeof(pthread_t));
+	src->philo_tab = (pthread_t *)malloc(num * sizeof(pthread_t));
+	src->philo = (t_philo *)malloc(num * sizeof(t_philo));
 }
 
 void	ft_initiaze_mutex(p_mutex_t *mutex, int num_philos, p_mutex_t *print)
@@ -58,27 +59,28 @@ void	ft_print_philo_status(t_philo philo, int fork)
 void	*ft_pick_up_forks(void	*var)
 {
 	t_global	*src;
+	int			i;
 
 	src = (t_global *)var;
-	if ((src->philo.num % 2) && !src->philo.eat_num)
+	if ((src->philo[i].num % 2) && !src->philo[i].eat_num)
 	{
 		//Here you should print that the philo X is thinking!
-		src->philo.state = THINK;
+		src->philo[i].state = THINK;
 		// pthread_mutex_lock(&(src->print));
-		ft_print_philo_status(src->philo, 0);
+		ft_print_philo_status(src->philo[i], 0);
 		// pthread_mutex_unlock(&(src->print));
 		usleep(500);
 	}
-	pthread_mutex_lock(src->fork_tab + src->philo.num - 1);
-	pthread_mutex_lock(src->fork_tab + src->philo.num);
-	src->philo.state = EAT;
-	ft_print_philo_status(src->philo, 1);
+	pthread_mutex_lock(src->fork_tab + src->philo[i].num - 1);
+	pthread_mutex_lock(src->fork_tab + src->philo[i].num);
+	src->philo[i].state = EAT;
+	ft_print_philo_status(src->philo[i], 1);
 	usleep(src->time_eat);
-	(src->philo.eat_num)++;
-	pthread_mutex_unlock(src->fork_tab + src->philo.num - 1);
-	pthread_mutex_unlock(src->fork_tab + src->philo.num);
-	src->philo.state = SLEEP;
-	ft_print_philo_status(src->philo, 1);
+	(src->philo[i].eat_num)++;
+	pthread_mutex_unlock(src->fork_tab + src->philo[i].num - 1);
+	pthread_mutex_unlock(src->fork_tab + src->philo[i].num);
+	src->philo[i].state = SLEEP;
+	ft_print_philo_status(src->philo[i], 1);
 	usleep(src->time_sleep);
 }
 
@@ -91,11 +93,11 @@ void	ft_create_threads(t_global	*src)
 	while (i < src->num_philos)
 	{
 		t = (src->philo_tab) + i;
-		src->philo.num = i + 1;
-		src->philo.philo = t;
-		src->philo.eat_num = 0;
-		src->philo.state = THINK;
-		src->philo.time_last_eat = 0;
+		src->philo[i].num = i + 1;
+		src->philo[i].philo = t;
+		src->philo[i].eat_num = 0;
+		src->philo[i].state = THINK;
+		src->philo[i].time_last_eat = 0;
 		if (pthread_create(t, NULL, &ft_pick_up_forks, (void *)src))
 			return (-1);
 		i++;

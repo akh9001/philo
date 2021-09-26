@@ -21,3 +21,10 @@
 	* and sould be destroyed (the  memory whitch has been allocated).
 
 ## How to create threads in loop:
+
+
+
+
+
+
+## Chaba don t forget to error handling.
