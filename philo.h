@@ -6,7 +6,7 @@
 /*   By: akhalidy <akhalidy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 19:06:41 by akhalidy          #+#    #+#             */
-/*   Updated: 2021/09/26 15:07:18 by akhalidy         ###   ########.fr       */
+/*   Updated: 2021/09/26 19:46:02 by akhalidy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ typedef pthread_mutex_t p_mutex_t;
 typedef struct s_data
 {
 	int					max_eat;
-	int					time_die;
-	int					time_eat;
+	unsigned long		time_die;
+	unsigned long		time_eat;
+	unsigned long		time_sleep;
 	int					num_philos;
-	int					time_sleep;
 	unsigned long		now;
 	pthread_mutex_t		*forks;
 	pthread_mutex_t		print;
@@ -54,4 +54,10 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 size_t	ft_strlen(const char *str);
 int		ft_atoi(const char *str);
+
+/*
+**
+*/
+
+void	ft_sleep(unsigned long time);
 #endif

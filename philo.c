@@ -6,7 +6,7 @@
 /*   By: akhalidy <akhalidy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/26 11:46:21 by akhalidy          #+#    #+#             */
-/*   Updated: 2021/09/26 15:44:31 by akhalidy         ###   ########.fr       */
+/*   Updated: 2021/09/26 19:52:19 by akhalidy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ t_philo *ft_fill_struct(char **argv)
     philo = (t_philo *)malloc(num * sizeof(t_philo));
     data = (t_data *)malloc(sizeof(t_data));
 	data->num_philos = num;
-	data->time_die = ft_atoi(*argv + 1) * 1000;
-	data->time_eat = ft_atoi(*argv + 2) * 1000;
-	data->time_sleep = ft_atoi(*argv + 3) * 1000;
+	data->time_die = ft_atoi(argv[1]) * 1000;
+	data->time_eat = ft_atoi(argv[2]) * 1000;
+	data->time_sleep = ft_atoi(argv[3]) * 1000;
+	// printf("num %d eat %lu sleep %lu die %lu\n",data->num_philos, data->time_eat, data->time_sleep, data->time_die);
 	if (*argv + 4)
 		data->max_eat = ft_atoi(*argv + 4);
 	data->forks = (p_mutex_t *)malloc(num * sizeof(p_mutex_t));
@@ -75,21 +76,11 @@ void	*ft_pick_up_forks(void	*var)
 	int			second_fork;
 
 	philo = (t_philo *)var;
-	// if ((src->philo[i].num % 2) && !src->philo[i].eat_num)
-	// {
-	// 	//Here you should print that the philo X is thinking!
-	// 	src->philo[i].state = THINK;
-	// 	// pthread_mutex_lock(&(src->print));
-	// 	ft_print_philo_status(src->philo[i], 0);
-	// 	// pthread_mutex_unlock(&(src->print));
-	// 	usleep(500);
-	// }
 	if (philo->id % 2)
 		usleep(200);	
 	while (1)
 	{
 		first_fork = philo->id - 1;
-		//second_fork = philo->data->num_philos - (-(first_fork - 1) % philo->data->num_philos);
 		second_fork = first_fork - 1;
 		if (second_fork < 0)
 			second_fork = philo->data->num_philos - 1;
@@ -103,14 +94,15 @@ void	*ft_pick_up_forks(void	*var)
 		ft_print_philo_status(*philo, 1);
 		philo->state = EAT;
 		ft_print_philo_status(*philo, 0);
-		usleep(philo->data->time_eat);
-		//printf("jhdfjhdjhhjghggjhdgvhjgdfjggggdhjgvjg\n");
+		// usleep(philo->data->time_eat);
+		ft_sleep(philo->data->time_eat);
 		(philo->eat_num)++;
 		pthread_mutex_unlock(philo->data->forks + first_fork);
 		pthread_mutex_unlock(philo->data->forks + second_fork);
 		philo->state = SLEEP;
 		ft_print_philo_status(*philo, 0);
-		usleep(philo->data->time_sleep);
+		// usleep(philo->data->time_sleep);
+		ft_sleep(philo->data->time_sleep);
 	}
 	return (NULL);
 }
@@ -133,8 +125,6 @@ int	ft_create_threads(t_philo *philo)
 		if (pthread_create(t, NULL, &ft_pick_up_forks, (void *)(philo + i)))
 			return (-1);
 		i++;
-		// if (i % 2)
-		// 	usleep(200);
 	}
 	return (0);
 }
@@ -151,6 +141,8 @@ int	main(int argc, char **argv)
 	philo = ft_fill_struct(argv + 1);
 	ft_initiaze_mutex(philo->data->forks, philo->data->num_philos, &philo->data->print);
 	ft_create_threads(philo);
-	while (1);
+	while (1)
+		usleep(5000);
+	// pthread_exit(NULL);
 	return (0);
 }

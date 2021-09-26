@@ -6,7 +6,7 @@
 #    By: akhalidy <akhalidy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/19 12:31:29 by akhalidy          #+#    #+#              #
-#    Updated: 2021/09/25 14:59:16 by akhalidy         ###   ########.fr        #
+#    Updated: 2021/09/26 19:29:18 by akhalidy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME = philo
 
 NAME_BONUS = philo_bonus
 
-SRCS = 	philo.c \
+SRCS = 	philo.c ft_sleep.c\
 		ft_strlen.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_atoi.c \
 
 SRCS_BONUS =
