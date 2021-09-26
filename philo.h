@@ -6,7 +6,7 @@
 /*   By: akhalidy <akhalidy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 19:06:41 by akhalidy          #+#    #+#             */
-/*   Updated: 2021/09/26 11:50:18 by akhalidy         ###   ########.fr       */
+/*   Updated: 2021/09/26 15:07:18 by akhalidy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,18 @@
 
 typedef pthread_mutex_t p_mutex_t;
 
+typedef struct s_data
+{
+	int					max_eat;
+	int					time_die;
+	int					time_eat;
+	int					num_philos;
+	int					time_sleep;
+	unsigned long		now;
+	pthread_mutex_t		*forks;
+	pthread_mutex_t		print;
+}						t_data;
+
 typedef struct s_philo
 {
 	int			id;
@@ -32,17 +44,6 @@ typedef struct s_philo
 	pthread_t	philo;
 	t_data		*data;
 }				t_philo;
-
-typedef struct s_data
-{
-	int					max_eat;
-	int					time_die;
-	int					time_eat;
-	int					num_philos;
-	int					time_sleep;
-	pthread_mutex_t		*forks;
-	pthread_mutex_t		print;
-}						t_data;
 
 /*
 **	help functions

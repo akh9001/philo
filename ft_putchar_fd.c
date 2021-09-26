@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhalidy <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: akhalidy <akhalidy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 04:42:04 by akhalidy          #+#    #+#             */
-/*   Updated: 2019/10/24 05:01:35 by akhalidy         ###   ########.fr       */
+/*   Updated: 2021/09/26 14:31:13 by akhalidy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "philo.h"
 
 void	ft_putchar_fd(char c, int fd)
 {

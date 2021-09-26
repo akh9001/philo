@@ -6,11 +6,11 @@
 /*   By: akhalidy <akhalidy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 05:43:04 by akhalidy          #+#    #+#             */
-/*   Updated: 2021/09/15 10:55:22 by akhalidy         ###   ########.fr       */
+/*   Updated: 2021/09/26 14:31:03 by akhalidy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "philo.h"
 
 void	ft_putstr_fd(char *s, int fd)
 {
