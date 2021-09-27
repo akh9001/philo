@@ -6,7 +6,7 @@
 /*   By: akhalidy <akhalidy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/26 11:46:21 by akhalidy          #+#    #+#             */
-/*   Updated: 2021/09/27 19:37:47 by akhalidy         ###   ########.fr       */
+/*   Updated: 2021/09/27 19:53:06 by akhalidy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,10 @@ int ft_supervisor(t_philo *philo)
 			if (max_eat != -181)
 				if (philo->eat_num >= max_eat)
 					score++;
-			// printf("philo %d now : %lu, laast eat: %lu %d\n", i, now, philo[i].last_eat, philo[i].eat_num);
-			if ((now - philo[i].last_eat) >= time_die)
+			// printf("philo %d now : %lu, laast eat: %lu %d\n", i, time_die, now - philo[i].last_eat, philo[i].eat_num);
+			if ((now - philo[i].last_eat) >= (time_die / 1000))
 			{
-				printf("#####################\n");
-				philo->state = DIE;
+				philo[i].state = DIE;
 				ft_print_philo_status(philo[i], 0);
 				//You should free;
 				return (10);
