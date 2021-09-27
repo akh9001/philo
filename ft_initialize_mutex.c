@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sleep.c                                         :+:      :+:    :+:   */
+/*   ft_initialize_mutex.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akhalidy <akhalidy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/26 19:11:05 by akhalidy          #+#    #+#             */
-/*   Updated: 2021/09/27 18:21:21 by akhalidy         ###   ########.fr       */
+/*   Created: 2021/09/27 17:08:31 by akhalidy          #+#    #+#             */
+/*   Updated: 2021/09/27 17:09:11 by akhalidy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_sleep(unsigned long time)
+void	ft_initiaze_mutex(p_mutex_t *mutex, int num_philos, p_mutex_t *print)
 {
-	unsigned long	now;
-	unsigned long	stop;
-	struct timeval	tv;
+	int	i;
 
-	gettimeofday(&tv, NULL);
-	now = tv.tv_sec * 1000 + tv.tv_usec / 1000;
-	stop = time / 1000 + now;
-	usleep(2 * (time / 3));
-	while (now < stop)
+	i = 0;
+	while (i < num_philos)
 	{
-		gettimeofday(&tv, NULL);
-		now = tv.tv_sec * 1000 + tv.tv_usec / 1000;
+		pthread_mutex_init(mutex + i, NULL);
+		i++;
 	}
+	pthread_mutex_init(print, NULL);
 }
