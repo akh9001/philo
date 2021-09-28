@@ -6,7 +6,7 @@
 /*   By: akhalidy <akhalidy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 19:06:41 by akhalidy          #+#    #+#             */
-/*   Updated: 2021/09/28 19:34:58 by akhalidy         ###   ########.fr       */
+/*   Updated: 2021/09/28 19:44:32 by akhalidy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ void	ft_free_philos(t_philo	**philos);
 */
 
 void	ft_sleep(unsigned long time);
-void	ft_print_philo_status(t_philo philo, int fork, int die);
 void	ft_get_time_ms(unsigned long *time, t_philo philo);
+void	ft_print_philo_status(t_philo philo, int fork, int die);
 
 /*
 ** Mutex & threads functions
