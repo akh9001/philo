@@ -6,7 +6,7 @@
 /*   By: akhalidy <akhalidy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/26 19:11:05 by akhalidy          #+#    #+#             */
-/*   Updated: 2021/09/27 18:21:21 by akhalidy         ###   ########.fr       */
+/*   Updated: 2021/09/28 12:47:11 by akhalidy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_sleep(unsigned long time)
 	gettimeofday(&tv, NULL);
 	now = tv.tv_sec * 1000 + tv.tv_usec / 1000;
 	stop = time / 1000 + now;
-	usleep(2 * (time / 3));
+	usleep(time - 10000);
 	while (now < stop)
 	{
 		gettimeofday(&tv, NULL);

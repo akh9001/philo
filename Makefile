@@ -6,7 +6,7 @@
 #    By: akhalidy <akhalidy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/19 12:31:29 by akhalidy          #+#    #+#              #
-#    Updated: 2021/09/27 17:12:49 by akhalidy         ###   ########.fr        #
+#    Updated: 2021/09/28 09:19:45 by akhalidy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRCS = 	philo.c ft_sleep.c ft_get_time_ms.c ft_print_status.c ft_fill_struct.c\
 
 SRCS_BONUS =
 
-CFLAGS = -Wall -Wextra -Werror -pthread
+CFLAGS = -Wall -Wextra -Werror -pthread -fsanitize=address
 
 all		: $(NAME)
 
