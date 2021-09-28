@@ -6,7 +6,7 @@
 #    By: akhalidy <akhalidy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/19 12:31:29 by akhalidy          #+#    #+#              #
-#    Updated: 2021/09/28 09:19:45 by akhalidy         ###   ########.fr        #
+#    Updated: 2021/09/28 18:31:56 by akhalidy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,12 +17,12 @@ NAME = philo
 NAME_BONUS = philo_bonus
 
 SRCS = 	philo.c ft_sleep.c ft_get_time_ms.c ft_print_status.c ft_fill_struct.c\
-		ft_initialize_mutex.c ft_create_threads.c\
+		ft_initialize_mutex.c ft_create_threads.c ft_free.c\
 		ft_strlen.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_atoi.c \
 
 SRCS_BONUS =
 
-CFLAGS = -Wall -Wextra -Werror -pthread -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -pthread
 
 all		: $(NAME)
 

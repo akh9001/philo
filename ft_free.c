@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akhalidy <akhalidy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/16 19:53:51 by akhalidy          #+#    #+#             */
-/*   Updated: 2021/09/16 19:54:04 by akhalidy         ###   ########.fr       */
+/*   Created: 2021/09/28 18:26:41 by akhalidy          #+#    #+#             */
+/*   Updated: 2021/09/28 19:22:09 by akhalidy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "philo.h"
 
-char	*ft_strdup(const char *s1)
+void	ft_free_philos(t_philo	**philos)
 {
-	char	*str;
-	size_t	l;
-
-	if (!s1)
-		return (NULL);
-	l = ft_strlen(s1);
-	str = (char *)malloc(l + 1);
-	if (str)
-		ft_strlcpy(str, s1, l + 1);
-	return (str);
+	free(philos[0]->data->forks);
+	free(philos[0]->data);
+	free(philos[0]);
 }

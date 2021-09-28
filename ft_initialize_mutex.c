@@ -6,13 +6,13 @@
 /*   By: akhalidy <akhalidy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 17:08:31 by akhalidy          #+#    #+#             */
-/*   Updated: 2021/09/27 17:09:11 by akhalidy         ###   ########.fr       */
+/*   Updated: 2021/09/28 19:27:26 by akhalidy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_initiaze_mutex(p_mutex_t *mutex, int num_philos, p_mutex_t *print)
+void	ft_initiaze_mutex(t_mutex *mutex, int num_philos, t_mutex *print)
 {
 	int	i;
 

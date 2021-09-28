@@ -6,7 +6,7 @@
 /*   By: akhalidy <akhalidy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 19:06:41 by akhalidy          #+#    #+#             */
-/*   Updated: 2021/09/27 18:43:19 by akhalidy         ###   ########.fr       */
+/*   Updated: 2021/09/28 19:34:58 by akhalidy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include "pthread.h"
 # include "sys/time.h"
 
-typedef pthread_mutex_t p_mutex_t;
+typedef pthread_mutex_t	t_mutex;
 
 typedef struct s_data
 {
@@ -46,6 +46,16 @@ typedef struct s_philo
 	unsigned long	last_eat;
 }					t_philo;
 
+typedef struct s_supervisor
+{
+	int				i;
+	int				n;
+	int				score;
+	int				max_eat;
+	unsigned long	time_die;
+	unsigned long	now;	
+}				t_supervisor;
+
 /*
 **	help functions
 */
@@ -57,16 +67,17 @@ size_t	ft_strlen(const char *str);
 int		ft_atoi(const char *str);
 
 /*
-**
+**	fill structure & free it
 */
-t_philo *ft_fill_struct(char **argv);
+t_philo	*ft_fill_struct(char **argv);
+void	ft_free_philos(t_philo	**philos);
 
 /*
 **	Modified system function : usleep & gettimeofday
 */
 
 void	ft_sleep(unsigned long time);
-void	ft_print_philo_status(t_philo philo, int fork);
+void	ft_print_philo_status(t_philo philo, int fork, int die);
 void	ft_get_time_ms(unsigned long *time, t_philo philo);
 
 /*
@@ -75,5 +86,5 @@ void	ft_get_time_ms(unsigned long *time, t_philo philo);
 
 void	*ft_pick_up_forks(void	*var);
 int		ft_create_threads(t_philo *philo);
-void	ft_initiaze_mutex(p_mutex_t *mutex, int num_philos, p_mutex_t *print);
+void	ft_initiaze_mutex(t_mutex *mutex, int num_philos, t_mutex *print);
 #endif
