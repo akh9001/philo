@@ -6,7 +6,7 @@
 /*   By: akhalidy <akhalidy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/26 11:46:21 by akhalidy          #+#    #+#             */
-/*   Updated: 2021/09/28 19:58:20 by akhalidy         ###   ########.fr       */
+/*   Updated: 2021/09/29 17:43:11 by akhalidy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,17 @@ int	main(int argc, char **argv)
 		ft_putendl_fd("Error : number of args is incorrect!", 2);
 		return (-1);
 	}
+	if (!ft_check_args(argv + 1, argc - 1))
+	{
+		ft_putendl_fd("Error : Invalid argument!", 2);
+		return (-1);
+	}
 	philo = ft_fill_struct(argv + 1);
+	if (!philo)
+	{
+		ft_putendl_fd("Error : Invalid argument!", 2);
+		return (-1);
+	}
 	ft_initiaze_mutex(philo->data->forks, philo->data->num_philos,
 		&philo->data->print);
 	ft_create_threads(philo);

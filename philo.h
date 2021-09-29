@@ -6,7 +6,7 @@
 /*   By: akhalidy <akhalidy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 19:06:41 by akhalidy          #+#    #+#             */
-/*   Updated: 2021/09/28 19:44:32 by akhalidy         ###   ########.fr       */
+/*   Updated: 2021/09/29 17:41:48 by akhalidy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,13 @@ int		ft_atoi(const char *str);
 /*
 **	fill structure & free it
 */
+int		ft_check_args(char **argv, int argc);
+int		ft_check_range_arg(t_data *data, char **args);
+/*
+**	fill structure & free it
+*/
 t_philo	*ft_fill_struct(char **argv);
-void	ft_free_philos(t_philo	**philos);
+void	*ft_free_philos(t_philo	**philos);
 
 /*
 **	Modified system function : usleep & gettimeofday
