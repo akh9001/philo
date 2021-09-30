@@ -6,7 +6,7 @@
 /*   By: akhalidy <akhalidy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 16:32:16 by akhalidy          #+#    #+#             */
-/*   Updated: 2021/09/29 17:44:17 by akhalidy         ###   ########.fr       */
+/*   Updated: 2021/09/30 12:22:08 by akhalidy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_is_number(char *str)
 	i = 1;
 	if (!str)
 		return (0);
-	if (!ft_is_digit(*str) && *str != '-' && *str != '+')
+	if ((!ft_is_digit(*str) && *str != '+') || (*str == '+' && !str[i]))
 		return (0);
 	while (str[i])
 	{

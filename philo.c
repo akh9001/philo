@@ -6,7 +6,7 @@
 /*   By: akhalidy <akhalidy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/26 11:46:21 by akhalidy          #+#    #+#             */
-/*   Updated: 2021/09/29 17:43:11 by akhalidy         ###   ########.fr       */
+/*   Updated: 2021/09/30 13:33:35 by akhalidy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,28 @@
 // 		return (10);
 // 	}	
 // }
+
+int	ft_check_max_meal(t_philo **philo, unsigned long max_meal, int n)
+{
+	int	score;
+	int	i;
+
+	score = 0;
+	i = 0;
+	while (i < n)
+	{
+		if (max_meal != -181)
+			if (philo[0][i].eat_num >= max_meal)
+				score++;
+		i++;
+	}
+	if (score == n)
+	{
+		ft_free_philos(philo);
+		return (500);
+	}
+	return (0);
+}
 
 int	ft_supervisor(t_philo **philo)
 {
