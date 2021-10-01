@@ -6,34 +6,11 @@
 /*   By: akhalidy <akhalidy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/26 11:46:21 by akhalidy          #+#    #+#             */
-/*   Updated: 2021/10/01 18:16:58 by akhalidy         ###   ########.fr       */
+/*   Updated: 2021/10/01 18:18:09 by akhalidy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-int	ft_check_max_meal(t_philo **philo, int max_meal, int n)
-{
-	int	score;
-	int	i;
-
-	score = 0;
-	i = 0;
-	while (i < n)
-	{
-		if (max_meal != -181)
-			if (philo[0][i].eat_num >= max_meal)
-				score++;
-		i++;
-	}
-	if (score == n)
-	{
-		pthread_mutex_lock(&((*philo)->data->print));
-		ft_free_philos(philo);
-		return (500);
-	}
-	return (0);
-}
 
 int	ft_philo_died(t_philo **philo, t_supervisor x)
 {
