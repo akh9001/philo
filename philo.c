@@ -6,7 +6,7 @@
 /*   By: akhalidy <akhalidy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/26 11:46:21 by akhalidy          #+#    #+#             */
-/*   Updated: 2021/09/30 13:33:35 by akhalidy         ###   ########.fr       */
+/*   Updated: 2021/10/01 18:00:38 by akhalidy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 // 	}	
 // }
 
-int	ft_check_max_meal(t_philo **philo, unsigned long max_meal, int n)
+int	ft_check_max_meal(t_philo **philo, int max_meal, int n)
 {
 	int	score;
 	int	i;
@@ -43,6 +43,7 @@ int	ft_check_max_meal(t_philo **philo, unsigned long max_meal, int n)
 	}
 	if (score == n)
 	{
+		pthread_mutex_lock(&((*philo)->data->print));
 		ft_free_philos(philo);
 		return (500);
 	}
@@ -68,6 +69,7 @@ int	ft_supervisor(t_philo **philo)
 			ft_get_time_ms(&x.now, philo[0][x.i]);
 			if ((x.now - philo[0][x.i].last_eat) >= (x.time_die / 1000))
 			{
+				pthread_mutex_lock(&philo[0][x.i].is_eating);
 				philo[0][x.i].state = DIE;
 				ft_print_philo_status(philo[0][x.i], 0, 1);
 				ft_free_philos(philo);
@@ -77,6 +79,7 @@ int	ft_supervisor(t_philo **philo)
 		}
 		if (x.score == x.n)
 		{
+			pthread_mutex_lock(&((*philo)->data->print));
 			ft_free_philos(philo);
 			return (500);
 		}
@@ -105,8 +108,7 @@ int	main(int argc, char **argv)
 		ft_putendl_fd("Error : Invalid argument!", 2);
 		return (-1);
 	}
-	ft_initiaze_mutex(philo->data->forks, philo->data->num_philos,
-		&philo->data->print);
+	ft_initiaze_mutex(philo->data, philo);
 	ft_create_threads(philo);
 	return (ft_supervisor(&philo));
 }

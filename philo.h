@@ -6,7 +6,7 @@
 /*   By: akhalidy <akhalidy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 19:06:41 by akhalidy          #+#    #+#             */
-/*   Updated: 2021/09/30 12:38:43 by akhalidy         ###   ########.fr       */
+/*   Updated: 2021/10/01 16:35:06 by akhalidy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_philo
 	int				eat_num;
 	t_data			*data;
 	pthread_t		philo;
+	pthread_mutex_t	is_eating;
 	unsigned long	last_eat;
 }					t_philo;
 
@@ -91,5 +92,5 @@ void	ft_print_philo_status(t_philo philo, int fork, int die);
 
 void	*ft_pick_up_forks(void	*var);
 int		ft_create_threads(t_philo *philo);
-void	ft_initiaze_mutex(t_mutex *mutex, int num_philos, t_mutex *print);
+void	ft_initiaze_mutex(t_data *data, t_philo *philo);
 #endif

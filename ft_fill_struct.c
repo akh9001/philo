@@ -6,7 +6,7 @@
 /*   By: akhalidy <akhalidy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 17:04:38 by akhalidy          #+#    #+#             */
-/*   Updated: 2021/09/30 12:48:24 by akhalidy         ###   ########.fr       */
+/*   Updated: 2021/10/01 15:45:18 by akhalidy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_assign(int *num, char *argv)
 {
-	num = ft_atoi(argv);
-	return (num);
+	*num = ft_atoi(argv);
+	return (*num);
 }
 
 t_philo	*ft_fill_struct(char **argv)
