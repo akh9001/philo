@@ -10,8 +10,7 @@ https://www.youtube.com/playlist?list=PLfqABt5AS4FmuQf70psXrsMLEDQXNkLq2
 	1 - A process can contain multiple threads!
 	2 - Adress space :
 		* threads share the process memory.
-		* a child process has its own memory, which is a dup 
-			of the parent process.
+		* a child process has its own memory, which is a dup of the parent process.
 			==> The fact that all theads, which is being executed at the same time,
 			have access to the same memory, make it possible that multiple threads can
 			try to change the memory(a var) at the same time.
