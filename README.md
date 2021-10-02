@@ -6,7 +6,7 @@
 ## Here is a brief explanation of threads & mutex, for more details check this:
 https://www.youtube.com/playlist?list=PLfqABt5AS4FmuQf70psXrsMLEDQXNkLq2
 
-###Diffrence between processes :
+### Diffrence between processes :
 	1 - A process can contain multiple threads!
 	2 - Adress space :
 		* threads share the process memory.
@@ -24,7 +24,7 @@ https://www.youtube.com/playlist?list=PLfqABt5AS4FmuQf70psXrsMLEDQXNkLq2
 			 That s why we should lock the var, or a block of code so it won t be executed
 			 by more than 1 thread at the same time. <=> mutex !!
 
-###mutex : Try to use when it s necessary, it makes the prog slower.
+### mutex : Try to use when it s necessary, it makes the prog slower.
 	 * we initialize it before we create the thread.
 	 * and should be destroyed (the  memory whitch has been allocated).
 
